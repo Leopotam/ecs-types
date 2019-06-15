@@ -67,9 +67,12 @@ namespace Leopotam.Ecs.Types {
         /// </summary>
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         public void Normalize () {
-            var invMagnitude = 1f / (float) Math.Sqrt (X * X + Y * Y);
-            X *= invMagnitude;
-            Y *= invMagnitude;
+            var length = (float) Math.Sqrt(x * x + y * y);
+            if (length != 0)
+            {
+                x /= length;
+                y /= length;
+            }
         }
 
 #if DEBUG
